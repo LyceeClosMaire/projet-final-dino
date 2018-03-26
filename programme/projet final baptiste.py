@@ -7,28 +7,32 @@ mixer.init()
 blanc = (255,255,255)
 noir = (0,0,0)
 size = width, height = 800, 600
+x = 0
 
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Dino")
 
 bg = pygame.image.load('bapt/bg.jpg')
 bg1 = pygame.image.load('bapt/menu.jpg')
+bgf = pygame.image.load('bapt/defiler.png')
 
 font = pygame.font.Font('bapt/BradBunR.ttf',160)
 font1 = pygame.font.Font('bapt/BradBunR.ttf',50)
 font2 = pygame.font.Font('bapt/BradBunR.ttf',20)
 
-def jouer():
-    verge
-
+def jouer(x):
+    screen.blit(bgf,(x,0))
+    x += 1
+    if x == 601 :
+        x = 0
 
 
 def commandes():
-    phallus
+    h
 
 
 def classement():
-    bite
+    tyj
 
 
 
@@ -60,11 +64,6 @@ continuer = 1
 
 while continuer:
 
-    if etat == 'info':
-        info()
-    if etat == 'menu':
-        menu()
-
 
     pygame.display.flip()
     for event in pygame.event.get():
@@ -74,6 +73,19 @@ while continuer:
         if event.type == MOUSEBUTTONDOWN:
             if event.button ==1:
                 etat = 'menu'
+        if etat == 'menu' and event.type == pygame.KEYDOWN and event.key == K_SPACE:
+            etat = 'jouer'
+
+
+
+        if etat == 'info':
+              info()
+        elif etat == 'menu':
+              menu()
+        elif etat == 'jouer':
+                jouer(x)
+        elif etat == 'commandes':
+            commandes()
 
 
 pygame.quit()
